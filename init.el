@@ -16,7 +16,3 @@
 (load "~/.emacs.d/lisp/keybindings.el")
 (load "~/.emacs.d/lisp/email.el")
 (load "~/.emacs.d/lisp/misc.el")
-
-;; Keep `custom-set-variables' out of `init.el'.
-(setq custom-file "~/.emacs.d/lisp/custom.el")
-(load custom-file)

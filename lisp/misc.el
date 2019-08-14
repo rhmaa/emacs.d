@@ -36,6 +36,10 @@
             (when (not (one-window-p))
               (delete-window))))
 
+;; Keep `custom-set-variables' out of `init.el'.
+(setq custom-file "~/.emacs.d/lisp/custom.el")
+(load custom-file)
+
 ;; Create temporary files in the system's temporary file directory.
 (setq backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
