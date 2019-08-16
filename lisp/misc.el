@@ -6,24 +6,26 @@
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
 (setq exec-path (append exec-path '("/Library/TeX/texbin/")))
 
-(delete-selection-mode 1)
-(set-fringe-mode 0)
+;; Use SBCL for Common Lisp.
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
 
+;; Disable most welcome messages.
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
-(add-hook 'prog-mode-hook 'show-paren-mode)
-
+;; Show line numbers in prog-mode.
 (if (version<= "26.0.50" emacs-version)
     (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'prog-mode-hook 'linum-mode))
 
-;; Use SBCL for Common Lisp.
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
+;; Highlight parenteses in prog-mode.
+(add-hook 'prog-mode-hook 'show-paren-mode)
 
-(setq-default c-basic-offset 8
+;; Use Allmann style indentation for C code. Use spaces instead of
+;; tabs, and set tab width to 8 spaces.
+(setq-default c-default-style "bsd"
+              c-basic-offset 8
 	      indent-tabs-mode nil)
-(setq c-default-style "bsd")
 
 ;; `eshell' related functions.
 (defun rha-open-eshell ()
@@ -47,6 +49,8 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+(delete-selection-mode 1)           ; Overwrite region
+(set-fringe-mode 0)                 ; Disable fringes
 (fset 'yes-or-no-p 'y-or-n-p)       ; Enable shorter answers
 (setq confirm-kill-emacs 'y-or-n-p  ; Enable confirm on exit
       ring-bell-function 'ignore)   ; Disable the alarm bell
