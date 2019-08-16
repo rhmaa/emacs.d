@@ -3,14 +3,16 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
+(setq exec-path (append exec-path '("/Library/TeX/texbin/")))
+
 (delete-selection-mode 1)
 (set-fringe-mode 0)
 
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
-;; (add-hook 'prog-mode-hook 'hl-line-mode)
-;; (add-hook 'prog-mode-hook 'show-paren-mode)
+(add-hook 'prog-mode-hook 'show-paren-mode)
 
 (if (version<= "26.0.50" emacs-version)
     (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -19,8 +21,9 @@
 ;; Use SBCL for Common Lisp.
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 
-(setq-default c-basic-offset 4)
-(setq c-default-style "k&r")
+(setq-default c-basic-offset 8
+	      indent-tabs-mode nil)
+(setq c-default-style "bsd")
 
 ;; `eshell' related functions.
 (defun rha-open-eshell ()

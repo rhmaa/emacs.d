@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 (setq rha-packages
-      '(go-mode markdown-mode slime naysayer-theme))
+      '(go-mode markdown-mode slime auto-complete))
 (dolist (pkg rha-packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
@@ -38,3 +38,7 @@
            slime-fuzzy-completion-in-place t
            slime-enable-evaluate-in-emacs t
            slime-autodoc-use-multiline-p t)))
+
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
