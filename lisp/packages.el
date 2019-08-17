@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 (setq rha-packages
-      '(go-mode markdown-mode slime auto-complete))
+      '(go-mode markdown-mode slime auto-complete auctex))
 (dolist (pkg rha-packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
