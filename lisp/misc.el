@@ -27,6 +27,9 @@
               c-basic-offset 8
 	      indent-tabs-mode nil)
 
+;; Automatically insert end braces.
+(add-hook 'c-mode-common-hook 'electric-pair-mode)
+
 ;; `eshell' related functions.
 (defun rha-open-eshell ()
   "Open `eshell' in a new window below the selected window."
