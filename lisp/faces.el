@@ -8,54 +8,52 @@
 (when (display-graphic-p)
   ;; Defaults.
   (set-face-attribute 'default nil
-                      :foreground "grey"
-                      :background "black")
+                      :foreground "#BEBEBE"
+                      :background "#000000")
   (set-face-attribute 'cursor nil
                       :foreground nil
-                      :background "white")
+                      :background "#90EE90")
   (set-face-attribute 'region nil
                       :foreground nil
-                      :background "blue")
+                      :background "#0000FF")
   (set-face-attribute 'highlight nil
                       :foreground nil
-                      :background "blue")
+                      :background "#0000FF")
   (set-face-attribute 'error nil
-                      :foreground "red"
+                      :foreground "#FF0000"
                       :bold t)
-
-  ;; Line numbers.
-  (set-face-attribute 'line-number nil
-                      :foreground "grey40"
-                      :background "black")
-  (set-face-attribute 'line-number-current-line nil
-                      :foreground "white"
-                      :background "black")
-
-  ;; Syntax highlighting.
-  (set-face-attribute  'font-lock-keyword-face nil
-                       :foreground "white"
-                       :bold t)
-  (set-face-foreground 'font-lock-builtin-face           "white")
-  (set-face-foreground 'font-lock-comment-delimiter-face "#67CD5D")
-  (set-face-foreground 'font-lock-comment-face           "#67CD5D")
-  (set-face-foreground 'font-lock-constant-face          "#8FE1C8")
-  (set-face-foreground 'font-lock-doc-face               "#2EC09C")
-  (set-face-foreground 'font-lock-function-name-face     "#D4D4D4")
-  (set-face-foreground 'font-lock-preprocessor-face      "#86E08F")
-  (set-face-foreground 'font-lock-string-face            "#2EC09C")
-  (set-face-foreground 'font-lock-type-face              "#86E08F")
-  (set-face-foreground 'font-lock-variable-name-face     "#D4D4D4")
-
+  
   ;; Mode line.
   (set-face-attribute 'mode-line nil
-                      :foreground "black"
-                      :background "grey"
+                      :foreground "#000000"
+                      :background "#BEBEBE"
                       :box nil)
   (set-face-attribute 'mode-line-inactive nil
-                      :foreground "grey"
-                      :background "grey20"
+                      :foreground "#BEBEBE"
+                      :background "#303030"
                       :box nil)
   (set-face-attribute 'mode-line-buffer-id nil
-                      :foreground "black"
-                      :distant-foreground "gray"
-                      :bold t))
+                      :foreground "#000000"
+                      :distant-foreground "#BEBEBE"
+                      :bold t)
+  
+  ;; Line numbers.
+  (set-face-attribute 'line-number nil
+                      :foreground "#606060"
+                      :background "#000000")
+  (set-face-attribute 'line-number-current-line nil
+                      :foreground "#FFFFFF"
+                      :background "#000000")
+  
+  ;; Syntax highlighting.
+  (set-face-foreground 'font-lock-builtin-face "#FFFFFF")
+  (set-face-foreground 'font-lock-comment-delimiter-face "#67CD5D")
+  (set-face-foreground 'font-lock-comment-face "#67CD5D")
+  (set-face-foreground 'font-lock-constant-face "#8FE1C8")
+  (set-face-foreground 'font-lock-doc-face "#2EC09C")
+  (set-face-foreground 'font-lock-function-name-face "#D4D4D4")
+  (set-face-foreground 'font-lock-keyword-face "#FFFFFF")
+  (set-face-foreground 'font-lock-preprocessor-face "#86E08F")
+  (set-face-foreground 'font-lock-string-face "#2EC09C")
+  (set-face-foreground 'font-lock-type-face "#86E08F")
+  (set-face-foreground 'font-lock-variable-name-face "#D4D4D4"))
