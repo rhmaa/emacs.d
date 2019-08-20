@@ -3,20 +3,9 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
-(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
-(setq exec-path (append exec-path '("/Library/TeX/texbin/")))
-
-;; Use SBCL for Common Lisp.
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-
 ;; Disable most welcome messages.
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
-
-;; Show line numbers in prog-mode.
-(if (version<= "26.0.50" emacs-version)
-    (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-  (add-hook 'prog-mode-hook 'linum-mode))
 
 ;; Highlight parenteses in prog-mode.
 (add-hook 'prog-mode-hook 'show-paren-mode)
@@ -52,6 +41,7 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+(column-number-mode 1)              ; Display column number in the mode line
 (delete-selection-mode 1)           ; Overwrite region
 (set-fringe-mode 0)                 ; Disable fringes
 (fset 'yes-or-no-p 'y-or-n-p)       ; Enable shorter answers

@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 (setq rha-packages
-      '(go-mode markdown-mode slime auto-complete auctex))
+      '(go-mode markdown-mode auto-complete auctex))
 (dolist (pkg rha-packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
@@ -20,25 +20,12 @@
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown'" . markdown-mode))
-(setq markdown-command "multimarkdown")
-
-(require 'slime)
-(setq slime-contribs '(slime-fancy)
-      slime-default-lisp 'sbcl
-      slime-net-coding-system 'utf-8-unix)
-
-(defun prelude-start-slime ()
-  (unless (slime-connected-p)
-    (save-excursion (slime))))
-(add-hook 'slime-mode-hook 'prelude-start-slime)
-
-(eval-after-load "slime"
-  '(progn
-     (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol
-           slime-fuzzy-completion-in-place t
-           slime-enable-evaluate-in-emacs t
-           slime-autodoc-use-multiline-p t)))
+(setq markdown-command "markdown")
 
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+(require 'auctex)
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
+(setq exec-path (append exec-path '("/Library/TeX/texbin/")))
