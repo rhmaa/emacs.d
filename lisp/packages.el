@@ -9,7 +9,8 @@
   (package-refresh-contents))
 
 (setq rha-packages
-      '(go-mode markdown-mode auto-complete auctex))
+      '(go-mode markdown-mode auto-complete auctex
+                magit dash lv transient with-editor))
 (dolist (pkg rha-packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
@@ -26,6 +27,5 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(require 'auctex)
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
 (setq exec-path (append exec-path '("/Library/TeX/texbin/")))
