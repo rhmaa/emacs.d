@@ -25,3 +25,8 @@
 
 ;; C-x t opens eshell in a new window below the selected window.
 (global-set-key (kbd "C-x t") 'rha-open-eshell)
+
+;; C-c C-l clears the buffer in eshell.
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-l") 'eshell/clear)))
