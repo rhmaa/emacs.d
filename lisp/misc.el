@@ -20,12 +20,12 @@
 (add-hook 'c-mode-common-hook 'electric-pair-mode)
 
 ;; `eshell' related functions.
-(defun rha-open-eshell ()
+(defun rha/open-eshell ()
   "Open `eshell' in a new window below the selected window."
   (interactive)
   (split-window-below)
   (windmove-down)
-  (set-window-text-height (selected-window) 20)
+  (set-window-text-height (selected-window) 24)
   (eshell))
 
 (add-hook 'eshell-exit-hook

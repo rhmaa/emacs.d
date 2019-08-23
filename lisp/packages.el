@@ -5,13 +5,13 @@
 (package-initialize)
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-(unless package-archive-contents
+(unless package-archivle-contents
   (package-refresh-contents))
 
-(setq rha-packages
+(setq rha/packages
       '(go-mode markdown-mode auto-complete auctex
                 magit dash lv transient with-editor))
-(dolist (pkg rha-packages)
+(dolist (pkg rha/packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
 
