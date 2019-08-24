@@ -2,8 +2,8 @@
 
 (when (eq system-type 'darwin)
   (if (member "SF Mono" (font-family-list))
-      (set-face-attribute 'default nil :font "SF Mono-17")
-    (set-face-attribute 'default nil :height 170)))
+      (set-face-attribute 'default nil :font "SF Mono-15")
+    (set-face-attribute 'default nil :height 150)))
 
 (when (display-graphic-p)
   ;; Defaults.
@@ -22,6 +22,9 @@
   (set-face-attribute 'error nil
                       :foreground "#ff0000"
                       :bold t)
+  (set-face-attribute 'vertical-border nil
+                      :foreground "#303030"
+                      :background nil)
 
   ;; Mode line.
   (set-face-attribute 'mode-line nil
