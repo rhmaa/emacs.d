@@ -10,14 +10,14 @@
 ;; Highlight parenteses in prog-mode.
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
+;; Automatically insert end braces.
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+
 ;; Use Allmann style indentation for C code. Use spaces instead of
 ;; tabs, and set tab width to 8 spaces.
 (setq-default c-default-style "bsd"
               c-basic-offset 8
 	      indent-tabs-mode nil)
-
-;; Automatically insert end braces.
-(add-hook 'c-mode-common-hook 'electric-pair-mode)
 
 ;; `eshell' related functions.
 (defun rha/open-eshell ()

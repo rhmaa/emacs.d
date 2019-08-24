@@ -5,27 +5,28 @@
 (package-initialize)
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-(unless package-archivle-contents
+(unless package-archive-contents
   (package-refresh-contents))
 
 (setq rha/packages
-      '(go-mode markdown-mode auto-complete auctex
-                magit dash lv transient with-editor))
+      '(auctex auto-complete magit markdown-mode))
 (dolist (pkg rha/packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
 
-(require 'go-mode)
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(defun rha/append-to-path (path)
+  "Add a path both to the $PATH variable and to Emacs' exec-path."
+  (setenv "PATH" (concat (getenv "PATH") ":" path))
+  (add-to-list 'exec-path path))
 
-(require 'markdown-mode)
+;; Make sure that the packages know where our bin folders are.
+(rha/append-to-path "/usr/local/bin")
+(rha/append-to-path "/Library/Tex/texbin/")
+
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown'" . markdown-mode))
-(setq markdown-command "markdown")
+(setq markdown-command "multimarkdown")
 
-(require 'auto-complete)
-(require 'auto-complete-config)
 (ac-config-default)
 
-(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
-(setq exec-path (append exec-path '("/Library/TeX/texbin/")))
+(require 'magit)
