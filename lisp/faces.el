@@ -2,8 +2,8 @@
 
 (when (eq system-type 'darwin)
   (if (member "SF Mono" (font-family-list))
-      (set-face-attribute 'default nil :font "SF Mono-15")
-    (set-face-attribute 'default nil :height 150)))
+      (set-face-attribute 'default nil :font "SF Mono-17")
+    (set-face-attribute 'default nil :height 170)))
 
 (when (display-graphic-p)
   ;; Defaults.
@@ -30,6 +30,8 @@
   (set-face-attribute 'mode-line nil
                       :foreground "#000000"
                       :background "#bebebe"
+                      :family "Lucida Grande"
+                      :height 0.75
                       :box nil)
   (set-face-attribute 'mode-line-inactive nil
                       :foreground "#bebebe"
@@ -39,14 +41,26 @@
                       :foreground "#000000"
                       :distant-foreground "#bebebe"
                       :bold t)
-  
+
+  ;; Minibuffer.
+  (defun rha/minibuffer-setup()
+    (set (make-local-variable 'face-remapping-alist)
+         '((default :family "Lucida Grande"))))
+  (add-hook 'minibuffer-setup-hook 'rha/minibuffer-setup)
+
+  ;; Echo area.
+  (with-current-buffer (get-buffer " *Echo Area 0*")
+    (setq-local face-remapping-alist
+                '((default (:family "Lucida Grande") variable-pitch))))
+
   ;; Line numbers.
-  (set-face-attribute 'line-number nil
-                      :foreground "#606060"
-                      :background "#000000")
-  (set-face-attribute 'line-number-current-line nil
-                      :foreground "#ffffff"
-                      :background "#000000")
+  (when (version<= "26.0.50" emacs-version)
+    (set-face-attribute 'line-number nil
+                        :foreground "#606060"
+                        :background "#000000")
+    (set-face-attribute 'line-number-current-line nil
+                        :foreground "#ffffff"
+                        :background "#000000"))
   
   ;; Syntax highlighting.
   (set-face-foreground 'font-lock-builtin-face "#ffffff")
