@@ -1,15 +1,15 @@
 ;;; packages.el --- External packages -*- lexical-binding:t -*-
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq rha/packages
-      '(auctex auto-complete magit markdown-mode))
+(setq rha/packages '(auctex markdown-mode))
 (dolist (pkg rha/packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
@@ -23,10 +23,7 @@
 (rha/append-to-path "/usr/local/bin")
 (rha/append-to-path "/Library/Tex/texbin/")
 
+;; Use markdown-mode when editing Markdown files.
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown'" . markdown-mode))
 (setq markdown-command "multimarkdown")
-
-(ac-config-default)
-
-(require 'magit)
