@@ -8,7 +8,7 @@
 (when (display-graphic-p)
   (tool-bar-mode 0)
   (scroll-bar-mode 0)
-  (set-frame-size (selected-frame) 90 70))
+  (set-frame-size (selected-frame) 82 64))
 
 ;; Load submodules.
 (load "~/.emacs.d/lisp/packages.el")
