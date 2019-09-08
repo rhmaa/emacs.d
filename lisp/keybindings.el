@@ -8,20 +8,17 @@
 
 ;; Make angle brackets easier to use with the Swedish Pok3r layout. By
 ;; default these are bound to Fn-ESC and Shift-ESC.
-(global-set-key (kbd "C-§")
+(global-set-key (kbd "§")
                 '(lambda ()
                    (interactive)
                    (insert "<")))
-(global-set-key (kbd "C-°")
+(global-set-key (kbd "°")
                 '(lambda ()
                    (interactive)
                    (insert ">")))
 
 ;; C-x C-b calls `buffer-menu' instead of `buffer-list'.
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
-
-;; C-c m calls rmail.
-(global-set-key (kbd "C-c m") 'rmail)
 
 ;; C-c C-f finds the file at point.
 (global-set-key (kbd "C-c C-f") 'find-file-at-point)

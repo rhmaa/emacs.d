@@ -7,8 +7,8 @@
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
-;; Highlight parenteses in prog-mode.
-(add-hook 'prog-mode-hook 'show-paren-mode)
+(setq-default cursor-type 'bar)
+(setq org-log-done 'time)
 
 ;; Automatically insert end braces.
 (add-hook 'prog-mode-hook 'electric-pair-mode)
