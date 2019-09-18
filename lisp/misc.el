@@ -1,20 +1,15 @@
 ;;; misc.el --- Miscellaneous configurations -*- lexical-binding:t -*-
 
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
+(setenv "LC_ALL" "en_GB.UTF-8")
 
 ;; Disable most welcome messages.
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
-(setq-default cursor-type 'bar)
-(setq org-log-done 'time)
-
 ;; Automatically insert end braces.
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
-;; Use Allmann style indentation for C code. Use spaces instead of
-;; tabs, and set tab width to 8 spaces.
+;; Use Allman style indentation for C.
 (setq-default c-default-style "bsd"
               c-basic-offset 8
 	      indent-tabs-mode nil)
@@ -47,3 +42,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)       ; Enable shorter answers
 (setq confirm-kill-emacs 'y-or-n-p  ; Enable confirm on exit
       ring-bell-function 'ignore)   ; Disable the alarm bell
+
+;; Org mode.
+(setq org-log-done 'time)
+(add-hook 'org-mode-hook 'auto-fill-mode)
