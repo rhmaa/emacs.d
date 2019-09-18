@@ -3,6 +3,11 @@
 (require 'rmail)
 (require 'smtpmail)
 
+;;; User Information:
+
+(setq user-full-name "Rikard Hevosmaa"
+      user-mail-address "rikard@posteo.se")
+
 ;;; Receive Messages:
 
 (setq rmail-file-name "~/.emacs.d/rmail/rmail.mbox"
@@ -16,9 +21,6 @@
 
 ;;; Send Messages:
 
-(setq user-full-name "Rikard Hevosmaa"
-      user-mail-address "rikard@posteo.se")
-
 (setq send-mail-function 'smtpmail-send-it
       smtpmail-smtp-server "posteo.de"
       smtpmail-stream-type 'starttls
@@ -26,3 +28,21 @@
       smtpmail-auth-credentials '("posteo.de" 587 nil nil)
       smtpmail-starttls-credentials '("posteo.de" 587 nil nil)
       starttls-use-gnutls nil)
+
+(setq message-signature-file "~/.emacs.d/rmail/signature")
+
+;; Archive messages with C-c C-a.
+
+;;; Reading Messages:
+
+(setq rmail-summary-window-size 16)
+
+(defun rha/rmail-archive ()
+  "Archive the current message."
+  (interactive)
+  (rmail-output "~/.emacs.d/rmail/archive.mbox")
+  (rmail-delete-forward))
+
+(add-hook 'rmail-summary-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-a") 'rha/rmail-archive)))
