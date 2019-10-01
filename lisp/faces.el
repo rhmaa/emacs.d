@@ -27,7 +27,7 @@
 (setq-default cursor-type 'bar)
 (set-face-attribute 'cursor nil
                     :foreground nil
-                    :background "#90ee90")
+                    :background "#ff00ff")
 
 ;; Mode line.
 (set-face-attribute 'mode-line nil
@@ -54,24 +54,37 @@
                       :foreground "#ffffff"
                       :background "#000000"))
 
-;; Syntax highlighting.
+;; Syntax highlighting, grey on black, purple accents.
 (set-face-foreground 'font-lock-builtin-face "#ffffff")
-(set-face-foreground 'font-lock-comment-delimiter-face "#67cd5d")
-(set-face-foreground 'font-lock-comment-face "#67cd5d")
-(set-face-foreground 'font-lock-constant-face "#8fe1c8")
-(set-face-foreground 'font-lock-doc-face "#2ec09c")
+(set-face-foreground 'font-lock-comment-delimiter-face "#473c8b")
+(set-face-foreground 'font-lock-comment-face "#473c8b")
+(set-face-foreground 'font-lock-constant-face "#ff00ff")
+(set-face-foreground 'font-lock-doc-face "#808080")
 (set-face-foreground 'font-lock-function-name-face "#d4d4d4")
 (set-face-foreground 'font-lock-keyword-face "#ffffff")
-(set-face-foreground 'font-lock-preprocessor-face "#86e08f")
-(set-face-foreground 'font-lock-string-face "#2ec09c")
-(set-face-foreground 'font-lock-type-face "#86e08f")
+(set-face-foreground 'font-lock-preprocessor-face "#9f79ee")
+(set-face-foreground 'font-lock-string-face "#808080")
+(set-face-foreground 'font-lock-type-face "#9f79ee")
 (set-face-foreground 'font-lock-variable-name-face "#d4d4d4")
+
+;; ;; Jon Blow.
+;; (set-face-foreground 'font-lock-builtin-face "#ffffff")
+;; (set-face-foreground 'font-lock-comment-delimiter-face "#67cd5d")
+;; (set-face-foreground 'font-lock-comment-face "#67cd5d")
+;; (set-face-foreground 'font-lock-constant-face "#8fe1c8")
+;; (set-face-foreground 'font-lock-doc-face "#2ec09c")
+;; (set-face-foreground 'font-lock-function-name-face "#d4d4d4")
+;; (set-face-foreground 'font-lock-keyword-face "#ffffff")
+;; (set-face-foreground 'font-lock-preprocessor-face "#86e08f")
+;; (set-face-foreground 'font-lock-string-face "#2ec09c")
+;; (set-face-foreground 'font-lock-type-face "#86e08f")
+;; (set-face-foreground 'font-lock-variable-name-face "#d4d4d4")
 
 ;; Eshell prompt.
 (setq eshell-prompt-function
       (lambda nil
         (concat
-         (propertize (eshell/pwd) 'face `(:foreground "#00ffff"))
+         (propertize (eshell/pwd) 'face `(:foreground "#ff00ff"))
          (propertize " $ " 'face `(:foreground "#bebebe")))))
 (setq eshell-highlight-prompt nil)
 
