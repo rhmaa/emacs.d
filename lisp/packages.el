@@ -9,19 +9,19 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq rha/packages '(auctex markdown-mode))
+;; Make sure that certain packages are always installed.
+(setq rha/packages '(markdown-mode))
 (dolist (pkg rha/packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
 
+;; Make sure that the packages know where our bin folders are.
 (defun rha/append-to-path (path)
   "Add a path both to the $PATH variable and to Emacs' exec-path."
   (setenv "PATH" (concat (getenv "PATH") ":" path))
   (add-to-list 'exec-path path))
 
-;; Make sure that the packages know where our bin folders are.
 (rha/append-to-path "/usr/local/bin")
-(rha/append-to-path "/Library/Tex/texbin/")
 
 ;; Use markdown-mode when editing Markdown files.
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))

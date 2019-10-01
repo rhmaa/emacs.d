@@ -31,8 +31,6 @@
 
 (setq message-signature-file "~/.emacs.d/rmail/signature")
 
-;; Archive messages with C-c C-a.
-
 ;;; Reading Messages:
 
 (setq rmail-summary-window-size 16)
