@@ -6,17 +6,6 @@
       mac-command-modifier 'meta
       mac-option-modifier 'nil)
 
-;; Make angle brackets easier to use with the Swedish Pok3r layout. By
-;; default these are bound to Fn-ESC and Shift-ESC.
-(global-set-key (kbd "§")
-                '(lambda ()
-                   (interactive)
-                   (insert "<")))
-(global-set-key (kbd "°")
-                '(lambda ()
-                   (interactive)
-                   (insert ">")))
-
 ;; C-x C-b calls `buffer-menu' instead of `buffer-list'.
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
