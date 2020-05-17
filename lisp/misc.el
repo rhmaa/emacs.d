@@ -9,10 +9,10 @@
 ;; Automatically insert end braces.
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 
-;; ;; Use Allman style indentation for C.
-;; (setq-default c-default-style "bsd"
-;;               c-basic-offset 4
-;; 	      indent-tabs-mode nil)
+;; Use Allman style indentation for C.
+(setq-default c-default-style "bsd"
+              c-basic-offset 4
+	      indent-tabs-mode nil)
 
 ;; `eshell' related functions.
 (defun rha/open-eshell ()

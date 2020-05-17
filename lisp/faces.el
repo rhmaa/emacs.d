@@ -5,11 +5,17 @@
   (global-font-lock-mode 0))
 
 (when (display-graphic-p)
-  ;; Font.
+  ;; Use SF Mono on Mac.
   (when (eq system-type 'darwin)
     (if (member "SF Mono" (font-family-list))
 	(set-face-attribute 'default nil :font "SF Mono-15")
       (set-face-attribute 'default nil :height 150)))
+
+  ;; Use Fira Mono elsewhere.
+  (when (not (eq system-type 'darwin))
+    (if (member "Fira Mono" (font-family-list))
+	(set-face-attribute 'default nil :font "Fira Mono-11")
+      (set-face-atribute 'default nil :height 110)))
 
   ;; Defaults.
   (set-face-attribute 'default nil
@@ -39,7 +45,7 @@
 		      :foreground "#000000"
 		      :background "#bebebe"
 		      :family "Lucida Grande"
-		      :height 0.85
+		      :height 0.90
 		      :box nil)
   (set-face-attribute 'mode-line-inactive nil
 		      :foreground "#bebebe"
@@ -72,7 +78,7 @@
   ;; (set-face-foreground 'font-lock-type-face "#9f79ee")
   ;; (set-face-foreground 'font-lock-variable-name-face "#d4d4d4")
 
-  ;; Jon Blow.
+  ;; Syntax highlighting, grey on black, green accents.
   (set-face-foreground 'font-lock-builtin-face "#ffffff")
   (set-face-foreground 'font-lock-comment-delimiter-face "#67cd5d")
   (set-face-foreground 'font-lock-comment-face "#67cd5d")
@@ -93,14 +99,18 @@
 	   (propertize " $ " 'face `(:foreground "#bebebe")))))
   (setq eshell-highlight-prompt nil)
 
-  ;; Minibuffer.
-  (defun rha/minibuffer-setup()
-    (set (make-local-variable 'face-remapping-alist)
-	 '((default :family "Lucida Grande"))))
-  (add-hook 'minibuffer-setup-hook 'rha/minibuffer-setup)
+  ;; Following is an attempt to make the default Emacs minibuffer /
+  ;; echo area more similar to the Aquamacs appearance. This is an
+  ;; awful hack, and I don't think I will use it...
 
-  ;; Echo area.
-  (with-current-buffer (get-buffer " *Echo Area 0*")
-    (setq-local face-remapping-alist
-		'((default (:family "Lucida Grande") variable-pitch))))
+  ;; ;; Minibuffer.
+  ;; (defun rha/minibuffer-setup()
+  ;;   (set (make-local-variable 'face-remapping-alist)
+  ;; 	 '((default :family "Lucida Grande"))))
+  ;; (add-hook 'minibuffer-setup-hook 'rha/minibuffer-setup)
+
+  ;; ;; Echo area.
+  ;; (with-current-buffer (get-buffer " *Echo Area 0*")
+  ;;   (setq-local face-remapping-alist
+  ;; 		'((default (:family "Lucida Grande") variable-pitch))))
 )
