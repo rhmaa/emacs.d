@@ -11,28 +11,31 @@
 	(set-face-attribute 'default nil :font "SF Mono-15")
       (set-face-attribute 'default nil :height 150)))
 
-  ;; Use Fira Mono elsewhere.
-  (when (not (eq system-type 'darwin))
-    (if (member "Fira Mono" (font-family-list))
-	(set-face-attribute 'default nil :font "Fira Mono-11")
-      (set-face-atribute 'default nil :height 110)))
+  ;; Use Consolas on Windows.
+  (when (eq system-type 'windows-nt)
+    (if (member "Consolas" (font-family-list))
+        (set-face-attribute 'default nil :font "Consolas-11")
+      (set-face-attribute 'default nil :height 110)))
 
   ;; Defaults.
-  (set-face-attribute 'default nil
-		      :foreground "#bebebe"
-		      :background "#000000")
-  (set-face-attribute 'region nil
-		      :foreground nil
-		      :background "#0000ff")
-  (set-face-attribute 'highlight nil
-		      :foreground nil
-		      :background "#0000ff")
-  (set-face-attribute 'error nil
-		      :foreground "#ff0000"
-		      :bold t)
-  (set-face-attribute 'vertical-border nil
-		      :foreground "#303030"
-		      :background nil)
+
+  ;; Let Xresources determine the defaults on Linux.
+  (when (not (eq system-type 'gnu/linux))
+    (set-face-attribute 'default nil
+                        :foreground "#bebebe"
+                        :background "#000000")
+    (set-face-attribute 'region nil
+                        :foreground nil
+                        :background "#0000ff")
+    (set-face-attribute 'highlight nil
+                        :foreground nil
+                        :background "#0000ff")
+    (set-face-attribute 'error nil
+                        :foreground "#ff0000"
+                        :bold t)
+    (set-face-attribute 'vertical-border nil
+                        :foreground "#303030"
+                        :background nil))
 
   ;; Cursor.
   (setq-default cursor-type 'bar)
@@ -44,8 +47,6 @@
   (set-face-attribute 'mode-line nil
 		      :foreground "#000000"
 		      :background "#bebebe"
-		      :family "Lucida Grande"
-		      :height 0.90
 		      :box nil)
   (set-face-attribute 'mode-line-inactive nil
 		      :foreground "#bebebe"
