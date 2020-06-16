@@ -7,18 +7,18 @@
 
 (when (display-graphic-p)
   (tool-bar-mode 0)
-  (scroll-bar-mode 0)
-  (set-frame-size (selected-frame) 100 80))
+  (menu-bar-mode 0)
+  (scroll-bar-mode 0))
 
 ;; Disable the menu bar in text consoles.
 (unless (display-graphic-p)
   (menu-bar-mode 0))
 
-;; Load submodules.
+;; Load modules.
 (load "~/.emacs.d/lisp/packages.el")
-(load "~/.emacs.d/lisp/keybindings.el")
+(load "~/.emacs.d/lisp/keys.el")
 (load "~/.emacs.d/lisp/misc.el")
+(load "~/.emacs.d/lisp/faces.el")
 
-;; Disabled submodules.
-;; (load "~/.emacs.d/lisp/faces.el")
+;; Disabled modules.
 ;; (load "~/.emacs.d/lisp/email.el")

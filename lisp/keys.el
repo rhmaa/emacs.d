@@ -1,12 +1,16 @@
-;;; keybindings.el --- Custom keybindings -*- lexical-binding:t -*-
+;;; keys.el --- Custom keybindings -*- lexical-binding:t -*-
 
-;; Command as meta and option as alt on OS X.
+;; Use command as meta and option as alt on OS X.
 (setq mac-option-key-is-meta 'nil
       mac-command-key-is-meta 't
       mac-command-modifier 'meta
       mac-option-modifier 'nil)
 
 ;; C-x C-b calls `buffer-menu' instead of `buffer-list'.
+;; By default, C-x C-b calls `buffer-list', splits the active window
+;; horizontally, and places the buffer list in the newly created
+;; window. `buffer-menu' opens the buffer list in the active window.
+;; I find this behaviour much easier to work with.
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 ;; C-c C-f finds the file at point.
