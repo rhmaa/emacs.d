@@ -16,9 +16,6 @@
 
 ;; Load modules.
 (load "~/.emacs.d/lisp/packages.el")
+(load "~/.emacs.d/lisp/faces.el")
 (load "~/.emacs.d/lisp/keys.el")
 (load "~/.emacs.d/lisp/misc.el")
-(load "~/.emacs.d/lisp/faces.el")
-
-;; Disabled modules.
-;; (load "~/.emacs.d/lisp/email.el")

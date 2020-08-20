@@ -1,19 +1,10 @@
 ;;; packages.el --- External packages -*- lexical-binding:t -*-
 
 (require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-;; Use unsafe connection on Windows.
-(let* ((no-ssl (and (eq system-type 'windows-nt)
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl "http" "https")))
-  (add-to-list 'package-archives
-	       (cons "melpa" (concat proto "://melpa.org/packages/")) t))
-
-;; Use SSL on Mac and Linux.
-(when (not (eq system-type 'windows-nt))
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
-
-(package-initialize)
+(when (< emacs-major-version 27)
+  (package-initialize))
 (unless package-archive-contents
   (package-refresh-contents))
 
