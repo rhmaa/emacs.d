@@ -16,8 +16,8 @@
 ;; C-c C-f finds the file at point.
 (global-set-key (kbd "C-c C-f") 'find-file-at-point)
 
-;; C-x t opens eshell in a new window below the selected window.
-(global-set-key (kbd "C-x t") 'rha/open-eshell)
+;; C-x C-t opens eshell in a new window below the selected window.
+(global-set-key (kbd "C-x C-t") 'rha/open-eshell)
 
 ;; C-c C-l clears the buffer in eshell.
 (add-hook 'eshell-mode-hook
