@@ -13,8 +13,17 @@
 (unless (display-graphic-p)
   (menu-bar-mode 0))
 
+;; Specify default directory for the initialisation files.
+;; Use the XDG standard directory on Linux, use the Emacs default on
+;; all other system.
+(defvar rha/default-directory nil
+  "The default directory for Emacs' initialisation files.")
+(if (eq system-type 'gnu/linux)
+    (setq rha/default-directory "~/.config/emacs")
+  (setq rha/default-directory "~/.emacs.d"))
+
 ;; Load modules.
-(load "~/.emacs.d/lisp/packages.el")
-(load "~/.emacs.d/lisp/faces.el")
-(load "~/.emacs.d/lisp/keys.el")
-(load "~/.emacs.d/lisp/misc.el")
+(load (concat rha/default-directory "/lisp/packages.el"))
+(load (concat rha/default-directory "/lisp/faces.el"))
+(load (concat rha/default-directory "/lisp/keys.el"))
+(load (concat rha/default-directory "/lisp/misc.el"))
