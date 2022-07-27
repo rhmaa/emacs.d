@@ -8,21 +8,24 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Make sure that certain packages are always installed.
-(setq rha/packages '(markdown-mode))
-(dolist (pkg rha/packages)
+(defvar rha/required-packages '(markdown-mode go-mode rust-mode)
+  "List of packages that should always be installed.")
+(dolist (pkg rha/required-packages)
   (when (not (package-installed-p pkg))
     (package-install pkg)))
 
 ;; Make sure that the packages know where our bin folders are.
 (defun rha/append-to-path (path)
-  "Add a path both to the $PATH variable and to Emacs' exec-path."
+  "Add a path both to the $PATH variable and to `exec-path'."
   (setenv "PATH" (concat (getenv "PATH") ":" path))
   (add-to-list 'exec-path path))
 
-(rha/append-to-path "/usr/local/bin")
+(unless (eq system-type 'windows-nt)
+  (rha/append-to-path "/usr/local/bin"))
 
 ;; Use markdown-mode when editing Markdown files.
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown'" . markdown-mode))
 (setq markdown-command "multimarkdown")
+
+;;; packages.el ends here

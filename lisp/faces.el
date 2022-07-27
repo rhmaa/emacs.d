@@ -1,4 +1,4 @@
-;;; faces.el --- Face configurations -*- lexical-binding:t -*-
+;;; faces.el --- Face configurations. -*- lexical-binding:t -*-
 
 ;; Disable font lock in text consoles.
 (unless (display-graphic-p)
@@ -94,8 +94,9 @@
            (propertize " $ " 'face `(:foreground "#bebebe")))))
   (setq eshell-highlight-prompt nil)
 
-  ;; Emulate the appearance of the Aquamacs mode line and minibuffer
-  ;; on OSX.
+  ;; Below is an attempt at emulating the appearance of the mode line
+  ;; and minibuffer in Aquamacs. It's a pretty hacky solution, and
+  ;; should be optimised at some point.
   (when (eq system-type 'darwin)
     ;; Mode line.
     (set-face-attribute 'mode-line nil
@@ -104,6 +105,7 @@
 
     ;; Minibuffer.
     (defun rha/minibuffer-setup()
+      "Emulate the appearance of the Aquamacs minibuffer."
       (set (make-local-variable 'face-remapping-alist)
            '((default :family "Lucida Grande"))))
     (add-hook 'minibuffer-setup-hook 'rha/minibuffer-setup)
@@ -112,3 +114,5 @@
     (with-current-buffer (get-buffer " *Echo Area 0*")
       (setq-local face-remapping-alist
                   '((default (:family "Lucida Grande") variable-pitch))))))
+
+;;; faces.el ends here

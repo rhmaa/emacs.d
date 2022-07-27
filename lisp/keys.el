@@ -19,7 +19,13 @@
 ;; C-x C-t opens eshell in a new window below the selected window.
 (global-set-key (kbd "C-x C-t") 'rha/open-eshell)
 
+;; M-s swaps the placement of the current window, see
+;; `window-swap-states' for more information.
+(global-set-key (kbd "M-s") 'window-swap-states)
+
 ;; C-c C-l clears the buffer in eshell.
 (add-hook 'eshell-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c C-l") 'eshell/clear)))
+
+;;; keys.el ends here
