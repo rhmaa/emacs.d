@@ -18,9 +18,9 @@
 ;; Maximise the frame when its opened.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; Specify the default directory beneath which additional
-;; initialisation files are placed. Use the XDesktop standard on
-;; Linux; use the Emacs default on all other systems.
+;; Specify the default directory beneath which additional initialisation
+;; files are placed. Use the XDesktop standard on Linux; use the Emacs
+;; default on all other systems.
 (if (eq system-type 'gnu/linux)
     (setq user-emacs-directory "~/.config/emacs/")
   (setq user-emacs-directory "~/.emacs.d/"))
