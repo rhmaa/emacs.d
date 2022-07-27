@@ -16,6 +16,7 @@
   (windmove-down)
   (set-window-text-height (selected-window) 24)
   (eshell))
+(global-set-key (kbd "C-x C-t") 'rha/open-eshell)
 
 ;; Kill the selected window when exiting `eshell'.
 (add-hook 'eshell-exit-hook
@@ -28,12 +29,13 @@
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 (column-number-mode)                 ; Display column number in the mode line
-(display-time)                       ; Display the current time
-(delete-selection-mode)              ; Overwrite region
+(delete-selection-mode)              ; Enable region overwrite
+(display-time)                       ; Display the current time in the mode line
 (fset 'yes-or-no-p 'y-or-n-p)        ; Enable shorter answers
+(setq confirm-kill-emacs 'y-or-n-p)  ; Enable confirm on exit
+(setq fill-column 72)                ; Set linewrap at 72 characters
 (setq inhibit-startup-screen t)      ; Disable the welcome message
 (setq initial-scratch-message nil)   ; Disable the *scratch* message
-(setq confirm-kill-emacs 'y-or-n-p)  ; Enable confirm on exit
 (setq ring-bell-function 'ignore)    ; Disable the alarm bell
 
 ;; Keep `custom-set-variables' out of `init.el'.
