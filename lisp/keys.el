@@ -16,9 +16,6 @@
 ;; C-c C-f finds the file at point.
 (global-set-key (kbd "C-c C-f") 'find-file-at-point)
 
-;; C-x C-t opens eshell in a new window below the selected window.
-(global-set-key (kbd "C-x C-t") 'rha/open-eshell)
-
 ;; M-s swaps the placement of the current window, see
 ;; `window-swap-states' for more information.
 (global-set-key (kbd "M-s") 'window-swap-states)
@@ -27,5 +24,9 @@
 (add-hook 'eshell-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c C-l") 'eshell/clear)))
+
+;; C-c i finds the Emacs initalisation file.
+(global-set-key (kbd "C-c i") (lambda () (interactive)
+   (find-file (concat user-emacs-directory "init.el"))))
 
 ;;; keys.el ends here
