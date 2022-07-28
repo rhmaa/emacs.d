@@ -14,8 +14,14 @@
   ;; Use Cascadia Mono on Windows.
   (when (eq system-type 'windows-nt)
     (if (member "Cascadia Mono" (font-family-list))
-        (set-face-attribute 'default nil :font "Cascadia Mono-10")
-      (set-face-attribute 'default nil :height 100)))
+        (set-face-attribute 'default nil :font "Cascadia Mono-12")
+      (set-face-attribute 'default nil :height 120)))
+
+  ;; Use Source Code Pro on Linux.
+  (when (eq system-type 'gnu/linux)
+    (if (member "Source Code Pro" (font-family-list))
+        (set-face-attribute 'default nil :font "Source Code Pro-12")
+      (set-face-attribute 'default nil :height 120)))
 
   ;; Defaults.
   (set-face-attribute 'default nil
