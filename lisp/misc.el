@@ -39,7 +39,7 @@
 (setq ring-bell-function 'ignore)    ; Disable the alarm bell
 
 ;; Keep `custom-set-variables' out of `init.el'.
-(setq custom-file "~/.emacs.d/lisp/custom.el")
+(setq custom-file (concat user-emacs-directory "lisp/custom.el"))
 (load custom-file)
 
 ;;; misc.el ends here
