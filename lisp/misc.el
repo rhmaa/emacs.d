@@ -37,6 +37,7 @@
 (setq inhibit-startup-screen t)      ; Disable the welcome message
 (setq initial-scratch-message nil)   ; Disable the *scratch* message
 (setq ring-bell-function 'ignore)    ; Disable the alarm bell
+(setq undo-no-redo t)                ; Enable conventional undo/redo
 
 ;; Keep `custom-set-variables' out of `init.el'.
 (setq custom-file (concat user-emacs-directory "lisp/custom.el"))
