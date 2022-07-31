@@ -1,23 +1,21 @@
-;;; faces.el --- Face configurations. -*- lexical-binding:t -*-
+;;; faces.el --- Face configurations -*- lexical-binding:t -*-
 
 ;; Disable font lock in text consoles.
 (unless (display-graphic-p)
   (global-font-lock-mode 0))
 
 (when (display-graphic-p)
-  ;; Use SF Mono on Mac.
+  ;; Set up font depending on the current operating system.
   (when (eq system-type 'darwin)
     (if (member "SF Mono" (font-family-list))
-	(set-face-attribute 'default nil :font "SF Mono-15")
+        (set-face-attribute 'default nil :font "SF Mono-15")
       (set-face-attribute 'default nil :height 150)))
 
-  ;; Use Cascadia Mono on Windows.
   (when (eq system-type 'windows-nt)
     (if (member "Cascadia Mono" (font-family-list))
         (set-face-attribute 'default nil :font "Cascadia Mono-12")
       (set-face-attribute 'default nil :height 120)))
 
-  ;; Use Source Code Pro on Linux.
   (when (eq system-type 'gnu/linux)
     (if (member "Source Code Pro" (font-family-list))
         (set-face-attribute 'default nil :font "Source Code Pro-12")
@@ -69,6 +67,23 @@
                         :foreground "#ffffff"
                         :background "#000000"))
 
+  ;; Magit.
+  (set-face-attribute 'magit-diff-added nil
+                      :foreground "#67cd5d"
+                      :background "#000000")
+  (set-face-attribute 'magit-diff-added-highlight nil
+                      :foreground "#67cd5d"
+                      :background "#132611")
+  (set-face-attribute 'magit-diff-removed nil
+                      :foreground "#cc5f52"
+                      :background "#000000")
+  (set-face-attribute 'magit-diff-removed-highlight nil
+                      :foreground "#cc5f52"
+                      :background "#331714")
+  (set-face-attribute 'magit-diff-context-highlight nil
+                      :foreground "#bebebe"
+                      :background "#000000")
+
   ;; Syntax highlighting.
   (set-face-foreground 'font-lock-builtin-face "#ffffff")
   (set-face-foreground 'font-lock-comment-delimiter-face "#67cd5d")
@@ -82,7 +97,8 @@
   (set-face-foreground 'font-lock-type-face "#86e08f")
   (set-face-foreground 'font-lock-variable-name-face "#d4d4d4")
 
-  ;; Minimal black on white syntax highlighting.
+  ;; Black on white syntax highlighting.
+  ;; https://david.rothlis.net/emacs/customize_colors.html
   ;; (set-face-foreground 'font-lock-comment-face "#3f7f5f")
   ;; (set-face-foreground 'font-lock-string-face "#4f004f")
   ;; (set-face-foreground 'font-lock-constant-face "#4f004f")
@@ -101,8 +117,8 @@
   (setq eshell-highlight-prompt nil)
 
   ;; Below is an attempt at emulating the appearance of the mode line
-  ;; and minibuffer in Aquamacs. It's a pretty hacky solution, and
-  ;; should be optimised at some point.
+  ;; and minibuffer used in Aquamacs. It's a pretty hacky solution,
+  ;; and should be optimised at some point.
   (when (eq system-type 'darwin)
     ;; Mode line.
     (set-face-attribute 'mode-line nil
