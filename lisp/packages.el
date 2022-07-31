@@ -2,17 +2,15 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
 (when (< emacs-major-version 27)
   (package-initialize))
-(unless package-archive-contents
-  (package-refresh-contents))
 
 (defvar rha/required-packages
   '(markdown-mode go-mode rust-mode magit auto-complete)
   "List of packages that should always be installed.")
 (dolist (pkg rha/required-packages)
   (when (not (package-installed-p pkg))
+    (package-refresh-contents)
     (package-install pkg)))
 
 ;; Make sure that the packages know where our bin folders are.
