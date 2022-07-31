@@ -13,20 +13,19 @@
 ;; I find this behaviour much easier to work with.
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
-;; C-c C-f finds the file at point.
+;; General.
 (global-set-key (kbd "C-c C-f") 'find-file-at-point)
-
-;; M-s swaps the placement of the current window, see
-;; `window-swap-states' for more information.
 (global-set-key (kbd "M-s") 'window-swap-states)
-
-;; C-c C-l clears the buffer in eshell.
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c C-l") 'eshell/clear)))
-
-;; C-c i finds the Emacs initalisation file.
 (global-set-key (kbd "C-c i") (lambda () (interactive)
    (find-file (concat user-emacs-directory "init.el"))))
+
+;; Eshell.
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c l") 'eshell/clear)))
+
+;; Magit.
+(global-set-key (kbd "C-c g") 'magit-file-dispatch)
+(global-set-key (kbd "C-c d") 'magit-diff)
 
 ;;; keys.el ends here
