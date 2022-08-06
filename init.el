@@ -5,6 +5,11 @@
 ;;; Use of this source code is governed by the GNU General Public License
 ;;; version 3 or later, which can be found in the LICENSE file.
 
+;; Echo `emacs-init-time' in the minibuffer on startup.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message (concat "Emacs initialised in " (emacs-init-time)))))
+
 ;; Specify the default directory beneath which additional initialisation
 ;; files are placed. Use the XDesktop standard on Linux; use the Emacs
 ;; default on all other systems.
