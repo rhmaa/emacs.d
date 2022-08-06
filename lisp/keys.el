@@ -26,6 +26,12 @@
 
 ;; Magit.
 (global-set-key (kbd "C-c g") 'magit-file-dispatch)
-(global-set-key (kbd "C-c d") 'magit-diff)
+(global-set-key (kbd "C-c d") 'magit-diff-buffer-file)
+(global-set-key (kbd "C-c C-s") 'magit-diff-staged)
+(global-set-key (kbd "C-c C-d") 'magit-diff-unstaged)
+(global-set-key (kbd "C-c s") 'magit-status)
+(global-set-key (kbd "C-c p") 'magit-push)
+(global-set-key (kbd "C-c C-p") 'magit-push-current-to-upstream)
+(global-set-key (kbd "C-c c") 'magit-clone)
 
 ;;; keys.el ends here
