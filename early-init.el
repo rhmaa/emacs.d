@@ -12,10 +12,13 @@
 ;; Maximise the frame when its opened.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(load (concat user-emacs-directory "lisp/faces.el"))
-
 (set-face-attribute 'default nil
                     :foreground "#bebebe"
-                    :background "#000000")
+                    :background "#000000"
+                    :height 120)
+(set-face-attribute 'mode-line nil
+                    :foreground "#000000"
+                    :background "#bebebe"
+                    :box nil)
 
 ;;; early-init.el ends here
