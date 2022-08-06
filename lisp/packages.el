@@ -10,7 +10,8 @@
   "List of packages that should always be installed.")
 (dolist (pkg rha/required-packages)
   (when (not (package-installed-p pkg))
-    (package-refresh-contents)
+    (when (not package-archive-contents)
+        (package-refresh-contents))
     (package-install pkg)))
 
 ;; Make sure that the packages know where our bin folders are.
